@@ -1,1 +1,1 @@
-# qiskit-ui-components
+# Qiskit UI components
