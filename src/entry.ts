@@ -1,7 +1,7 @@
 import _Vue, { PluginFunction } from 'vue';
 
 // Import vue components
-import * as components from '@/lib-components/index';
+import * as components from '@/components/index';
 
 // Define typescript interfaces for autoinstaller
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,4 +43,4 @@ export default plugin;
 
 // To allow individual component use, export components
 // each can be registered via Vue.component()
-export * from '@/lib-components/index';
+export * from '@/components/index';
