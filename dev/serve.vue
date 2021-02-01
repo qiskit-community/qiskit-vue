@@ -1,17 +1,21 @@
 <script lang="ts">
 import Vue from "vue";
-import { qiskitUiComponentsSample } from "@/entry";
+import { UIShellHeader } from "@/entry";
 
 export default Vue.extend({
   name: "ServeDev",
   components: {
-    qiskitUiComponentsSample,
+    UIShellHeader,
   },
 });
 </script>
 
 <template>
   <div id="app">
-    <qiskit-ui-components-sample />
+    <UIShellHeader />
   </div>
 </template>
+
+<style lang="scss">
+@import "@/scss/styles.scss";
+</style>
