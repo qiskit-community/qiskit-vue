@@ -2,12 +2,18 @@
   "name": "components-library",
   "version": "0.1.0",
   "private": true,
+  "main": "./dist/qiskitVue.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name qiskitVue ./src/components/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
