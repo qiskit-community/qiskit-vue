@@ -10,11 +10,10 @@
     "lint": "vue-cli-service lint"
   },
   "files": [
-    "dist/*",
-    "src/*",
-    "types.d.ts"
+    "dist",
+    "src"
   ],
-  "types": "types.d.ts",
+  "types": "src/index.d.ts",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0",

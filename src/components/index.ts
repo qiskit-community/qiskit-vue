@@ -1,3 +1,1 @@
-import QVUIShellHeader from "./UIShellHeader/UIShellHeader.vue";
-
-export { QVUIShellHeader };
+export { default as QUIShellHeader } from "./UIShellHeader/UIShellHeader.vue";
