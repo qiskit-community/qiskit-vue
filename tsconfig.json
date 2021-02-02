@@ -3,20 +3,18 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "declaration": true,
-    "declarationDir": "dist",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "node",
-      "vue"
+      "webpack-env",
+      "jest"
     ],
     "paths": {
       "@/*": [
@@ -30,8 +28,12 @@
       "scripthost"
     ]
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ]
 }
