@@ -11,8 +11,10 @@
   },
   "files": [
     "dist/*",
-    "src/*"
+    "src/*",
+    "types.d.ts"
   ],
+  "types": "types.d.ts",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
