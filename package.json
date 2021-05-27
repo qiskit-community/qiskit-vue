@@ -4,13 +4,14 @@
   "main": "./dist/qiskit-vue.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name qiskit-vue ./src/components/index.ts",
+    "build": "vue-cli-service build --target lib --name qiskit-vue ./src/main.js",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepublishOnly": "$npm_execpath build"
   },
   "files": [
-    "dist",
-    "src"
+    "dist/*",
+    "src/*"
   ],
   "types": "src/index.d.ts",
   "dependencies": {
