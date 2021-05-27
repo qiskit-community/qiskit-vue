@@ -1,1 +1,1 @@
-export { default as QUIShellHeader } from "./UIShellHeader/UIShellHeader.vue";
+export { default as QiskitHeader } from "./QiskitHeader";

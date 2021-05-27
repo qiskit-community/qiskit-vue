@@ -1,4 +1,4 @@
-# components-library
+# qiskit-vue
 
 ## Project setup
 ```
