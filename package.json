@@ -4,7 +4,7 @@
   "main": "./dist/qiskit-vue.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name qiskit-vue ./src/components/index.ts",
+    "build": "vue-cli-service build --target wc ./src/components/**/*.vue",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "prepublishOnly": "npm run build"
