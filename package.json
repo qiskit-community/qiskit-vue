@@ -1,6 +1,6 @@
 {
   "name": "@qiskit-community/qiskit-vue",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "main": "./dist/qiskit-vue.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
