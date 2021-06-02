@@ -3,10 +3,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { defineComponent } from "vue-demi";
 
-@Component
-export default class QiskitHeader extends Vue {}
+export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>
