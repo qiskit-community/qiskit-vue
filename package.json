@@ -15,6 +15,7 @@
   ],
   "types": "src/index.d.ts",
   "dependencies": {
+    "@vue/composition-api": "^1.0.0-rc.10",
     "core-js": "^3.6.5",
     "vue-class-component": "^7.2.3",
     "vue-demi": "^0.9.1",
@@ -29,7 +30,6 @@
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/composition-api": "*",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.3",
@@ -44,12 +44,6 @@
     "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {
-    "@vue/composition-api": "*",
-    "vue": "^2.0.0 || >=3.0.0-rc.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
+    "vue": "^2.6.0 || >=3.0.0-rc.0"
   }
 }

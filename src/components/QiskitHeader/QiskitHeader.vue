@@ -1,11 +1,21 @@
 <template>
-  <div class="qiskit-header">Header component</div>
+  <div class="qiskit-header">Header component: {{ count }}</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue-demi";
+import { defineComponent, reactive, toRefs } from "vue-demi";
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      count: 0,
+    });
+
+    return {
+      ...toRefs(state),
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>
