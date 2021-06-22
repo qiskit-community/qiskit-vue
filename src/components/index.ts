@@ -1,1 +1,1 @@
-export { default as QiskitHeader } from "./QiskitHeader";
+export { default as QLogo } from "./QLogo/index.vue";
