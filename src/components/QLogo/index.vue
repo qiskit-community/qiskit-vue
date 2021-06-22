@@ -64,11 +64,6 @@
         <stop class="app-logo__gradient" offset="0" stop-opacity="0" />
         <stop class="app-logo__gradient" offset=".4" />
       </radialGradient>
-      <style>
-        .cls-1 {
-          fill: #010101;
-        }
-      </style>
     </defs>
     <path
       class="app-logo__solid"
@@ -126,5 +121,11 @@ export default defineComponent({
   &__gradient {
     stop-color: currentColor;
   }
+}
+</style>
+
+<style>
+.cls-1 {
+  fill: #010101;
 }
 </style>
