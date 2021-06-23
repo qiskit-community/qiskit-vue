@@ -1,6 +1,6 @@
 {
   "name": "@qiskit-community/qiskit-vue",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "main": "./src/components/index.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
