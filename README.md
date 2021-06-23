@@ -2,6 +2,8 @@
 
 Qiskit component library for Vue 2 and Vue 3.
 
+https://qiskit-community.github.io/qiskit-vue/
+
 ## Installation
 
 Install the required dependencies:
