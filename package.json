@@ -10,7 +10,7 @@
     "prepublishOnly": "npm run build",
     "dev": "npm run storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -o docs-storybook-build",
     "deploy": "storybook-to-ghpages"
   },
   "files": [
