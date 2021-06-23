@@ -102,13 +102,16 @@
 
 <script lang="ts">
 import { defineComponent } from "vue-demi";
+import uidMixin from "../../mixins/uid.vue";
 
 export default defineComponent({
   methods: {
     scopeId(str: string): string {
-      return `${str}${Math.random}`;
+      return `${str}${this.uid}`;
     },
   },
+
+  mixins: [uidMixin],
 });
 </script>
 
@@ -121,11 +124,5 @@ export default defineComponent({
   &__gradient {
     stop-color: currentColor;
   }
-}
-</style>
-
-<style>
-.cls-1 {
-  fill: #010101;
 }
 </style>
