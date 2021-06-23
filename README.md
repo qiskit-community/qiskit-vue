@@ -1,6 +1,6 @@
 # Qiskit Vue
 
-Qiskit components library for Vue 2 and Vue 3.
+Qiskit component library for Vue 2 and Vue 3.
 
 ## Installation
 
