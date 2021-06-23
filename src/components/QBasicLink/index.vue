@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue-demi";
-import { SegmentData } from "@/links";
+import { SegmentData } from "../../links";
 
 export default defineComponent({
   props: {
