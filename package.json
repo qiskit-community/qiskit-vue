@@ -1,8 +1,7 @@
 {
   "name": "@qiskit-community/qiskit-vue",
   "version": "0.16.0",
-  "main": "./src/components/index.ts",
-  "types": "src/index.d.ts",
+  "main": "./src/index.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "test:unit": "vue-cli-service test:unit",
