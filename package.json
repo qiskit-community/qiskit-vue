@@ -15,6 +15,9 @@
     "src/*"
   ],
   "dependencies": {
+    "@carbon/colors": "^10.27.0",
+    "@carbon/layout": "^10.26.0",
+    "@carbon/type": "^10.30.0",
     "core-js": "^3.6.5",
     "vue": "^2.0.0 || >=3.0.0-rc.0",
     "vue-demi": "latest"
