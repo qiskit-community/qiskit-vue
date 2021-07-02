@@ -9,7 +9,10 @@ export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>
+@import "@carbon/colors/scss/colors";
+
 .qiskit-banner {
-  background: purple;
+  background: $carbon--purple-80;
+  color: $white-0;
 }
 </style>
