@@ -17,6 +17,7 @@ export default defineComponent({});
 
 .qiskit-banner {
   @include carbon--type-style("body-long-01");
+
   align-items: center;
   background: $carbon--purple-80;
   color: $white-0;
@@ -24,7 +25,8 @@ export default defineComponent({});
   font-family: carbon--font-family("sans");
   padding: $spacing-04 $spacing-06;
 
-  ::v-deep(a) {
+  ::v-deep a,
+  ::v-deep a:visited {
     color: $white-0;
     text-decoration: underline;
   }
