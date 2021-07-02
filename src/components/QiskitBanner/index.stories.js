@@ -11,7 +11,7 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: `<qiskit-banner class="${args.style}">${args.default}</qiskit-banner>`,
+  template: `<qiskit-banner :no-x-padding="${args.paddingXNone}" class="${args.style}">${args.default}</qiskit-banner>`,
 });
 
 export const ShortContent = Template.bind({});
@@ -34,4 +34,10 @@ FixedHeight.args = {
 export const WithLink = Template.bind({});
 WithLink.args = {
   default: "Lorem ipsum dolor sit amet. <a href='#'>Click here!</a>",
+};
+
+export const WithoutHorizontalPadding = Template.bind({});
+WithoutHorizontalPadding.args = {
+  default: "Lorem ipsum dolor sit amet",
+  paddingXNone: true,
 };
