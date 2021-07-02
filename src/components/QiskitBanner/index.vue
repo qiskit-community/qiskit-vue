@@ -10,6 +10,7 @@ export default defineComponent({});
 
 <style lang="scss" scoped>
 @import "@carbon/colors/scss/colors";
+@import "@carbon/layout/scss/layout";
 @import "@carbon/type/scss/type";
 
 .qiskit-banner {
@@ -18,5 +19,6 @@ export default defineComponent({});
   background: $carbon--purple-80;
   color: $white-0;
   font-family: carbon--font-family("sans");
+  padding: $spacing-04 $spacing-06;
 }
 </style>
