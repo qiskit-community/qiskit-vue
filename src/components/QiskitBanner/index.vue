@@ -1,5 +1,5 @@
 <template>
-  <div class="qiskit-banner">
+  <div class="qiskit-banner" :class="{ 'padding-x-none': paddingXNone }">
     <div><slot /></div>
   </div>
 </template>
@@ -7,7 +7,15 @@
 <script lang="ts">
 import { defineComponent } from "vue-demi";
 
-export default defineComponent({});
+export default defineComponent({
+  props: {
+    paddingXNone: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -24,6 +32,11 @@ export default defineComponent({});
   display: flex;
   font-family: carbon--font-family("sans");
   padding: $spacing-04 $spacing-06;
+
+  &.padding-x-none {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   ::v-deep a,
   ::v-deep a:visited {
