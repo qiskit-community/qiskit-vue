@@ -1,5 +1,7 @@
 <template>
-  <div class="qiskit-banner"><slot /></div>
+  <div class="qiskit-banner">
+    <div><slot /></div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -21,5 +23,10 @@ export default defineComponent({});
   display: flex;
   font-family: carbon--font-family("sans");
   padding: $spacing-04 $spacing-06;
+
+  ::v-deep(a) {
+    color: $white-0;
+    text-decoration: underline;
+  }
 }
 </style>

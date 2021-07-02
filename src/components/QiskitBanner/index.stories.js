@@ -30,3 +30,8 @@ FixedHeight.args = {
   default: "Lorem ipsum dolor sit amet",
   style: "height: 100px;",
 };
+
+export const WithLink = Template.bind({});
+WithLink.args = {
+  default: "Lorem ipsum dolor sit amet. <a href='#'>Click here!</a>",
+};
