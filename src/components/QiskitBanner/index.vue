@@ -1,6 +1,6 @@
 <template>
   <div class="qiskit-banner" :class="{ 'padding-x-none': paddingXNone }">
-    <div><slot /></div>
+    <div class="slot-wrapper"><slot /></div>
   </div>
 </template>
 
@@ -43,5 +43,9 @@ export default defineComponent({
     color: $white-0;
     text-decoration: underline;
   }
+}
+
+.slot-wrapper {
+  width: 100%;
 }
 </style>
