@@ -6,7 +6,10 @@
     :style="hasLink && 'cursor:pointer'"
     :rel="isExternal && 'noopener'"
     :target="isExternal && '_blank'"
-    @click="handleClick"
+    @click="
+      $emit('click');
+      segment && $trackClickEvent(segment.cta, segment.location);
+    "
     @mouseenter="$emit('mouseenter')"
   >
     <slot />
@@ -14,10 +17,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue-demi";
-import { SegmentData } from "../../links";
+import { defineComponent } from "vue-demi";
+import { NAME_BASIC_LINK } from "../../constants/components";
 
 export default defineComponent({
+  name: NAME_BASIC_LINK,
+
   props: {
     isStatic: {
       type: Boolean,
@@ -26,7 +31,7 @@ export default defineComponent({
     },
 
     segment: {
-      type: Object as PropType<SegmentData>,
+      type: Object,
       default: undefined,
       required: false,
     },
@@ -61,15 +66,6 @@ export default defineComponent({
 
     isNuxtLink(): boolean {
       return !this.isAnchor;
-    },
-  },
-
-  methods: {
-    handleClick() {
-      this.$emit("click");
-
-      // TODO:
-      // this.segment && this.$trackClickEvent(this.segment);
     },
   },
 });
