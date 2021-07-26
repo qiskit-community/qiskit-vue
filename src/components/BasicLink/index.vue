@@ -15,9 +15,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue-demi";
+import { NAME_BASIC_LINK } from "../../constants/components";
 import { SegmentData } from "../../links";
 
 export default defineComponent({
+  name: NAME_BASIC_LINK,
+
   props: {
     isStatic: {
       type: Boolean,
