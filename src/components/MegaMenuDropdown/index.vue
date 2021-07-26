@@ -2,8 +2,8 @@
   <article class="app-mega-dropdown">
     <label
       ref="filterWrapper"
-      class="app-mega-dropdown__filter-wrapper bx--col-md-4 bx--col-lg-4"
-      :class="`app-mega-dropdown__filter-wrapper_${kind}`"
+      class="app-mega-dropdown__filter-wrapper"
+      :class="[`app-mega-dropdown__filter-wrapper_${kind}`, inputFieldClasses]"
     >
       <input
         v-model="textOnTheFilter"
@@ -122,6 +122,12 @@ export default defineComponent({
     content: {
       type: Array as PropType<MegaMenuDropdownContent>,
       required: true,
+    },
+
+    inputFieldClasses: {
+      type: String,
+      default: "",
+      required: false,
     },
 
     kind: {
