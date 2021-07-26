@@ -99,7 +99,6 @@ interface HighlightTextState {
 interface NavLink {
   label: string;
   url: string;
-  // segment?: SegmentData
 }
 
 interface MegaMenuDropdownGroup {
