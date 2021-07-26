@@ -152,7 +152,7 @@ export default defineComponent({
     },
   },
 
-  data() {
+  data: () => {
     return {
       searchTermTrackingTimeout: null as NodeJS.Timeout | null,
 
@@ -224,7 +224,7 @@ export default defineComponent({
     },
 
     _trackPerformedSearch() {
-      if (this.segmentComponentName) {
+      if (this.segmentComponentName && this.trackPerformedSearch) {
         this.trackPerformedSearch(
           this.segmentComponentName,
           this.textOnTheFilter
