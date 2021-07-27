@@ -1,4 +1,4 @@
-export { default as BasicLink } from "./BasicLink/index.vue";
-export { default as MegaMenuDropdown } from "./MegaMenuDropdown/index.vue";
-export { default as QLogo } from "./QLogo/index.vue";
-export { default as QiskitBanner } from "./QiskitBanner/index.vue";
+export { QiskitBanner } from "./banner";
+export { QiskitBasicLink } from "./basic-link";
+export { QiskitLogo } from "./logo";
+export { QiskitMegaMenuDropdown } from "./mega-menu-dropdown";

@@ -88,7 +88,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue-demi";
-import QiskitBasicLink from "../BasicLink/index.vue";
+import { QiskitBasicLink } from "../basic-link";
 import { NAME_MEGA_MENU_DROPDOWN } from "../../constants/components";
 
 interface HighlightTextState {

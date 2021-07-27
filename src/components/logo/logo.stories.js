@@ -1,17 +1,17 @@
-import QLogo from "./index.vue";
+import { QiskitLogo } from "./";
 
 export default {
-  title: "Components/QLogo",
-  component: QLogo,
+  title: "Components/QiskitLogo",
+  component: QiskitLogo,
   argTypes: {},
 };
 
 const Template = (args) => ({
-  components: { QLogo },
+  components: { QiskitLogo },
   setup() {
     return { args };
   },
-  template: '<q-logo v-bind="args" />',
+  template: '<qiskit-logo v-bind="args" />',
 });
 
 export const Standard = Template.bind({});

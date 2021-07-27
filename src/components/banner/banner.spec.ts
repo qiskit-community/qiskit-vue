@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import QiskitBanner from "./index.vue";
+import { QiskitBanner } from "./";
 
 describe("QiskitBanner", () => {
   test("renders slot content", () => {

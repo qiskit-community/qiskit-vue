@@ -1,4 +1,4 @@
-import QiskitMegaMenuDropdown from "./index.vue";
+import { QiskitMegaMenuDropdown } from "./";
 
 export default {
   title: "Components/QiskitMegaMenuDropdown",

@@ -1,4 +1,4 @@
-import QiskitBanner from "./index.vue";
+import { QiskitBanner } from "./";
 
 export default {
   title: "Components/QiskitBanner",
