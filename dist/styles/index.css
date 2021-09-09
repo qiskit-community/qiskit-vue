@@ -1,0 +1,19 @@
+:root {
+  --color-background-primary: #ffffff;
+  --color-text-primary: #343a3f;
+  --color-text-title: #121619;
+  --color-text-link: #6929c4;
+  --navbar-item-color: #343a3f;
+  --navbar-logo-color: #697077;
+}
+
+html.dark-theme {
+  --color-background-primary: #121619;
+  --color-text-primary: #dde1e6;
+  --color-text-title: #dde1e6;
+  --color-text-link: #be95ff;
+  --navbar-item-color: #dde1e6;
+  --navbar-logo-color: #dde1e6;
+}
+
+/*# sourceMappingURL=index.css.map */
