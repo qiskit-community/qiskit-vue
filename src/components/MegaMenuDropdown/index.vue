@@ -393,7 +393,7 @@ export default defineComponent({
 .app-mega-dropdown {
   @include carbon--type-style("body-short-01");
 
-  color: $cool-gray-80;
+  color: var(--color-text-primary);
   font-family: carbon--font-family("sans");
   position: relative;
 
@@ -403,9 +403,9 @@ export default defineComponent({
     justify-content: space-between;
     align-items: center;
     padding: $spacing-03;
-    color: $cool-gray-80;
-    fill: $cool-gray-80;
-    border-bottom: 1px solid $purple-70;
+    color: var(--color-text-primary);
+    fill: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border-highlight);
 
     &__input {
       flex: 1;
@@ -451,7 +451,7 @@ export default defineComponent({
     top: 2.5rem;
     padding: $spacing-07 $spacing-05;
     width: 12 * 4rem;
-    background-color: $white-0;
+    background-color: var(--color-background-primary);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     height: 32rem;
     overflow-y: scroll;
@@ -487,14 +487,14 @@ export default defineComponent({
     &-link {
       display: block;
       padding-bottom: $spacing-05;
-      color: $cool-gray-80;
+      color: var(--color-text-primary);
       text-decoration: none;
 
       &_title {
         font-weight: 600;
       }
       &__text-highlight {
-        background-color: $purple-20;
+        background-color: var(--color-text-highlight);
       }
     }
     &-empty {

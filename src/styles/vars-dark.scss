@@ -8,6 +8,10 @@ html.dark-theme {
   --color-text-primary: #{$cool-gray-20};
   --color-text-title: #{$cool-gray-20};
   --color-text-link: #{$purple-40};
+  --color-text-highlight: #{$purple-70};
+
+  // Border colors
+  --color-border-highlight: #{$purple-40};
 
   // Navbar
   --navbar-item-color: #{$cool-gray-20};

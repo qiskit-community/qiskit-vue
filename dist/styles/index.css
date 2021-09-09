@@ -3,6 +3,8 @@
   --color-text-primary: #343a3f;
   --color-text-title: #121619;
   --color-text-link: #6929c4;
+  --color-text-highlight: #e8daff;
+  --color-border-highlight: #6929c4;
   --navbar-item-color: #343a3f;
   --navbar-logo-color: #697077;
 }
@@ -12,6 +14,8 @@ html.dark-theme {
   --color-text-primary: #dde1e6;
   --color-text-title: #dde1e6;
   --color-text-link: #be95ff;
+  --color-text-highlight: #6929c4;
+  --color-border-highlight: #be95ff;
   --navbar-item-color: #dde1e6;
   --navbar-logo-color: #dde1e6;
 }
