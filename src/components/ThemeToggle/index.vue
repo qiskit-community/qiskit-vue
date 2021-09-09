@@ -1,7 +1,3 @@
-<template>
-  <div>Theme toggle</div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue-demi";
 
