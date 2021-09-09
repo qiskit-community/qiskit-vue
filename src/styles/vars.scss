@@ -2,14 +2,18 @@
 
 :root {
   // Background colors
-  --color-background-primary: #{$white-0};
+  --qiskit--color-background-primary: #{$white-0};
 
   // Text colors
-  --color-text-primary: #{$cool-gray-80};
-  --color-text-title: #{$cool-gray-100};
-  --color-text-link: #{$purple-70};
+  --qiskit--color-text-primary: #{$cool-gray-80};
+  --qiskit--color-text-title: #{$cool-gray-100};
+  --qiskit--color-text-link: #{$purple-70};
+  --qiskit--color-text-highlight: #{$purple-20};
+
+  // Border colors
+  --qiskit--color-border-highlight: #{$purple-70};
 
   // Navbar
-  --navbar-item-color: #{$cool-gray-80};
-  --navbar-logo-color: #{$cool-gray-60};
+  --qiskit--navbar-item-color: #{$cool-gray-80};
+  --qiskit--navbar-logo-color: #{$cool-gray-60};
 }

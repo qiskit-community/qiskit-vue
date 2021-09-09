@@ -1,3 +1,5 @@
+import "../dist/styles/index.css"
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +8,10 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  darkMode: {
+    classTarget: 'html',
+    darkClass: "dark-theme",
+    lightClass: "light-theme",
+    stylePreview: true,
+  }
 }
