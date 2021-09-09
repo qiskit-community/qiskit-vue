@@ -2,14 +2,18 @@
 
 html.dark-theme {
   // Background colors
-  --color-background-primary: #{$cool-gray-100};
+  --qiskit--color-background-primary: #{$cool-gray-100};
 
   // Text colors
-  --color-text-primary: #{$cool-gray-20};
-  --color-text-title: #{$cool-gray-20};
-  --color-text-link: #{$purple-40};
+  --qiskit--color-text-primary: #{$cool-gray-20};
+  --qiskit--color-text-title: #{$cool-gray-20};
+  --qiskit--color-text-link: #{$purple-40};
+  --qiskit--color-text-highlight: #{$purple-70};
+
+  // Border colors
+  --qiskit--color-border-highlight: #{$purple-40};
 
   // Navbar
-  --navbar-item-color: #{$cool-gray-20};
-  --navbar-logo-color: #{$cool-gray-20};
+  --qiskit--navbar-item-color: #{$cool-gray-20};
+  --qiskit--navbar-logo-color: #{$cool-gray-20};
 }

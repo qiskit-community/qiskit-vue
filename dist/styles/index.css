@@ -1,19 +1,23 @@
 :root {
-  --color-background-primary: #ffffff;
-  --color-text-primary: #343a3f;
-  --color-text-title: #121619;
-  --color-text-link: #6929c4;
-  --navbar-item-color: #343a3f;
-  --navbar-logo-color: #697077;
+  --qiskit--color-background-primary: #ffffff;
+  --qiskit--color-text-primary: #343a3f;
+  --qiskit--color-text-title: #121619;
+  --qiskit--color-text-link: #6929c4;
+  --qiskit--color-text-highlight: #e8daff;
+  --qiskit--color-border-highlight: #6929c4;
+  --qiskit--navbar-item-color: #343a3f;
+  --qiskit--navbar-logo-color: #697077;
 }
 
 html.dark-theme {
-  --color-background-primary: #121619;
-  --color-text-primary: #dde1e6;
-  --color-text-title: #dde1e6;
-  --color-text-link: #be95ff;
-  --navbar-item-color: #dde1e6;
-  --navbar-logo-color: #dde1e6;
+  --qiskit--color-background-primary: #121619;
+  --qiskit--color-text-primary: #dde1e6;
+  --qiskit--color-text-title: #dde1e6;
+  --qiskit--color-text-link: #be95ff;
+  --qiskit--color-text-highlight: #6929c4;
+  --qiskit--color-border-highlight: #be95ff;
+  --qiskit--navbar-item-color: #dde1e6;
+  --qiskit--navbar-logo-color: #dde1e6;
 }
 
 /*# sourceMappingURL=index.css.map */
