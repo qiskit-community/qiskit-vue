@@ -1,0 +1,15 @@
+@import "../../node_modules/@carbon/colors/scss/colors.scss";
+
+html.dark-theme {
+  // Background colors
+  --color-background-primary: #{$cool-gray-100};
+
+  // Text colors
+  --color-text-primary: #{$cool-gray-20};
+  --color-text-title: #{$cool-gray-20};
+  --color-text-link: #{$purple-40};
+
+  // Navbar
+  --navbar-item-color: #{$cool-gray-20};
+  --navbar-logo-color: #{$cool-gray-20};
+}
