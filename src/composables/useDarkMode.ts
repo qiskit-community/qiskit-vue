@@ -38,6 +38,6 @@ function useDarkMode(): boolean {
   }
 
   return getIsDarkSchemeOsPreferred();
-};
+}
 
 export default useDarkMode;
