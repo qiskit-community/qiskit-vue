@@ -77,7 +77,7 @@
             Try broadening your search terms
           </p>
           <img
-            src="../../assets/img/empty-search.png"
+            :src="emptySearchImage"
             class="app-mega-dropdown__content-empty__image"
           />
         </div>
@@ -89,6 +89,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue-demi";
 import QiskitBasicLink from "../BasicLink/index.vue";
+import useDarkMode from "../../composables/useDarkMode";
 import { NAME_MEGA_MENU_DROPDOWN } from "../../constants/components";
 
 interface HighlightTextState {
@@ -168,6 +169,20 @@ export default defineComponent({
   },
 
   computed: {
+    isDarkMode(): boolean {
+      return useDarkMode();
+    },
+
+    emptySearchImage(): string {
+      let url = "empty-search.png";
+
+      if (this.isDarkMode) {
+        url = "empty-search-dark.png";
+      }
+
+      return require(`./../../assets/img/${url}`);
+    },
+
     filteredContent(): MegaMenuDropdownContent {
       if (this.isFilterTextEmpty) {
         return this.content;
