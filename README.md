@@ -84,3 +84,11 @@ npm run test:unit
 ```
 npm run lint
 ```
+
+### Conventions
+
+We use [Angular Commit Message Conventions](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format) as our convention for commit messages.
+
+## Versioning
+
+We use [Semantic Release](https://github.com/semantic-release/semantic-release) for releasing new package versions and updating our CHANGELOG.
