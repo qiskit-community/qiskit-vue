@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1627309118441" clover="3.2.0">
-  <project timestamp="1627309118441" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="2" coveredelements="2" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
-    <file name="index.vue" path="/Users/eddybrandovasquez/Development/GitHub/qiskit-community/qiskit-vue/src/components/QiskitBanner/index.vue">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-    </file>
+<coverage generated="1632924959291" clover="3.2.0">
+  <project timestamp="1632924959291" name="All files">
+    <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="9" coveredelements="9" complexity="0" loc="9" ncloc="9" packages="2" files="3" classes="3"/>
+    <package name="components.banner">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Banner.vue" path="/Users/eddybrandovasquez/Development/GitHub/qiskit-community/qiskit-vue/src/components/banner/Banner.vue">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/Users/eddybrandovasquez/Development/GitHub/qiskit-community/qiskit-vue/src/components/banner/index.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="constants">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="components.ts" path="/Users/eddybrandovasquez/Development/GitHub/qiskit-community/qiskit-vue/src/constants/components.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
