@@ -1,5 +1,7 @@
 # Qiskit Vue
 
+![npm](https://img.shields.io/npm/v/@qiskit-community/qiskit-vue)
+
 Qiskit component library for Vue 2 and Vue 3.
 
 https://qiskit-community.github.io/qiskit-vue/
