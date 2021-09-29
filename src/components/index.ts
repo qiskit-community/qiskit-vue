@@ -1,4 +1,11 @@
-export { default as BasicLink } from "./BasicLink/index.vue";
-export { default as MegaMenuDropdown } from "./MegaMenuDropdown/index.vue";
-export { default as QiskitBanner } from "./QiskitBanner/index.vue";
-export { default as ThemeToggle } from "./ThemeToggle/index.vue";
+import { QiskitBanner } from "./banner";
+import { QiskitBasicLink } from "./basic-link";
+import { QiskitMegaMenuDropdown } from "./mega-menu-dropdown";
+import { QiskitThemeToggle } from "./theme-toggle";
+
+export {
+  QiskitBanner,
+  QiskitBasicLink,
+  QiskitMegaMenuDropdown,
+  QiskitThemeToggle,
+};
