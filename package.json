@@ -14,7 +14,8 @@
     "storybook": "start-storybook -p 6006",
     "build-css": "sass ./src/styles/index.scss ./dist/styles/index.css",
     "build-storybook": "build-storybook -o docs",
-    "deploy": "storybook-to-ghpages"
+    "deploy": "storybook-to-ghpages",
+    "semantic-release": "semantic-release"
   },
   "engines": {
     "node": "14.18.0"
