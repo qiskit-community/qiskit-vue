@@ -11,7 +11,12 @@
         :key="label"
         class="navbar__nav-item"
       >
-        <a v-if="!subItems" class="navbar__nav-link" :href="url">{{ label }}</a>
+        <a
+          v-if="!subItems"
+          class="navbar__nav-link"
+          :href="url"
+          v-text="label"
+        />
 
         <bx-dropdown
           v-else
@@ -22,13 +27,19 @@
             onDropdownBeingSelected(`dropdown-${label}`)
           "
         >
-          <bx-dropdown-item
+          <a
             v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
             :key="subItemLabel"
-            :value="label"
+            class="navbar__nav-subitem"
+            :href="subItemUrl"
           >
-            <a :href="subItemUrl">{{ subItemLabel }}</a>
-          </bx-dropdown-item>
+            <bx-dropdown-item class="navbar__nav-dropdown-item" :value="label">
+              <span
+                class="navbar__nav-dropdown-item-text"
+                v-text="subItemLabel"
+              />
+            </bx-dropdown-item>
+          </a>
         </bx-dropdown>
       </li>
     </ul>
@@ -131,6 +142,7 @@ export default defineComponent({
 @import "@carbon/layout/scss/layout";
 @import "@carbon/type/scss/type";
 
+$nav-dropdown-item--background: $cool-gray-10;
 $nav-item--color: $cool-gray-80;
 $nav-item--height: 3.5rem;
 $nav-item--spacing-x: $spacing-06;
@@ -170,6 +182,10 @@ $nav-item--spacing-x: $spacing-06;
       text-decoration: underline;
     }
 
+    &::part(menu-body) {
+      top: calc(100% + 1rem);
+    }
+
     &::part(trigger-button) {
       --cds-body-short-01-font-size: 1rem;
       --cds-body-short-01-letter-spacing: 0;
@@ -180,6 +196,23 @@ $nav-item--spacing-x: $spacing-06;
       height: $nav-item--height;
       padding-left: $nav-item--spacing-x;
     }
+
+    &[open] {
+      &::part(trigger-button) {
+        background-color: $nav-dropdown-item--background;
+      }
+    }
+  }
+
+  &__nav-dropdown-item {
+    background: transparent;
+  }
+
+  &__nav-dropdown-item-text {
+    @include carbon--type-style("body-long-02");
+
+    color: $nav-item--color;
+    line-height: 0;
   }
 
   &__nav-item {
@@ -195,6 +228,26 @@ $nav-item--spacing-x: $spacing-06;
     padding: 0 $nav-item--spacing-x;
 
     &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__nav-subitem {
+    align-items: center;
+    background-color: $nav-dropdown-item--background;
+    border-bottom: 1px solid $cool-gray-20;
+    color: $nav-item--color;
+    display: flex;
+    height: $nav-item--height;
+    padding: 0 $spacing-03;
+    width: 100%;
+
+    &:last-child {
+      border: 0;
+    }
+
+    &:hover {
+      background-color: $cool-gray-20;
       text-decoration: underline;
     }
   }
