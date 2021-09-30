@@ -158,6 +158,7 @@ export default defineComponent({
 @import "@carbon/type/scss/type";
 
 $nav-dropdown-item--background: $cool-gray-10;
+$nav-item--border: 1px solid $cool-gray-20;
 $nav-item--color: $cool-gray-80;
 $nav-item--height: 3.5rem;
 $nav-item--spacing-x: $spacing-06;
@@ -172,7 +173,7 @@ $nav-item--spacing-x: $spacing-06;
   justify-content: space-between;
   width: 100%;
 
-  @media (max-width: 1050px) {
+  @include carbon--breakpoint-down("lg") {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: $nav-item--height 1fr;
@@ -180,7 +181,7 @@ $nav-item--spacing-x: $spacing-06;
   }
 
   &__collapse {
-    @media (max-width: 1050px) {
+    @include carbon--breakpoint-down("lg") {
       grid-area: nav;
 
       &:not(.show) {
@@ -209,22 +210,31 @@ $nav-item--spacing-x: $spacing-06;
     margin: 0;
     padding-left: 0;
 
-    @media (max-width: 1050px) {
+    @include carbon--breakpoint-down("lg") {
       flex-direction: column;
     }
   }
 
   &__nav-dropdown {
-    @media (max-width: 1050px) {
+    @include carbon--breakpoint-down("lg") {
       width: 100%;
     }
 
     &:hover {
-      text-decoration: underline;
+      @include carbon--breakpoint-up("lg") {
+        text-decoration: underline;
+      }
     }
 
     &::part(menu-body) {
       top: calc(100% + 1rem);
+
+      @include carbon--breakpoint-down("lg") {
+        box-shadow: none;
+        max-height: initial;
+        position: relative;
+        top: 0;
+      }
     }
 
     &::part(trigger-button) {
@@ -239,8 +249,17 @@ $nav-item--spacing-x: $spacing-06;
     }
 
     &[open] {
+      @include carbon--breakpoint-down("lg") {
+        height: $nav-item--height * 3;
+      }
+
       &::part(trigger-button) {
         background-color: $nav-dropdown-item--background;
+
+        @include carbon--breakpoint-down("lg") {
+          border-bottom: $nav-item--border;
+          margin-bottom: -1px;
+        }
       }
     }
   }
@@ -260,9 +279,9 @@ $nav-item--spacing-x: $spacing-06;
     display: flex;
     margin: 0;
 
-    @media (max-width: 1050px) {
-      border-bottom: 1px solid $cool-gray-20;
-      height: $nav-item--height;
+    @include carbon--breakpoint-down("lg") {
+      border-bottom: $nav-item--border;
+      min-height: $nav-item--height;
     }
   }
 
@@ -273,19 +292,21 @@ $nav-item--spacing-x: $spacing-06;
     height: $nav-item--height;
     padding: 0 $nav-item--spacing-x;
 
-    @media (max-width: 1050px) {
+    @include carbon--breakpoint-down("lg") {
       width: 100%;
     }
 
     &:hover {
-      text-decoration: underline;
+      @include carbon--breakpoint-up("lg") {
+        text-decoration: underline;
+      }
     }
   }
 
   &__nav-subitem {
     align-items: center;
     background-color: $nav-dropdown-item--background;
-    border-bottom: 1px solid $cool-gray-20;
+    border-bottom: $nav-item--border;
     color: $nav-item--color;
     display: flex;
     height: $nav-item--height;
@@ -293,17 +314,22 @@ $nav-item--spacing-x: $spacing-06;
     width: 100%;
 
     &:last-child {
-      border: 0;
+      @include carbon--breakpoint-up("lg") {
+        border: 0;
+      }
     }
 
     &:hover {
       background-color: $cool-gray-20;
-      text-decoration: underline;
+
+      @include carbon--breakpoint-up("lg") {
+        text-decoration: underline;
+      }
     }
   }
 
   &__toggler {
-    @media (min-width: 1051px) {
+    @include carbon--breakpoint-up("lg") {
       display: none;
     }
   }
