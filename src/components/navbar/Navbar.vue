@@ -6,17 +6,29 @@
       src="../../assets/img/logo.svg"
     />
     <ul class="navbar__nav">
-      <li class="navbar__nav-item">
-        <a class="navbar__nav-link" href="#">Overview</a>
-      </li>
-      <li class="navbar__nav-item">
-        <a class="navbar__nav-link" href="#">Learn</a>
-      </li>
-      <li class="navbar__nav-item">
-        <a class="navbar__nav-link" href="#">Community</a>
-      </li>
-      <li class="navbar__nav-item">
-        <a class="navbar__nav-link" href="#">Documentation</a>
+      <li
+        v-for="{ label, subItems, url } in navItems"
+        :key="label"
+        class="navbar__nav-item"
+      >
+        <a v-if="!subItems" class="navbar__nav-link" :href="url">{{ label }}</a>
+
+        <bx-dropdown
+          v-else
+          :trigger-content="label"
+          :ref="`dropdown-${label}`"
+          @bx-dropdown-beingselected.prevent="
+            onDropdownBeingSelected(`dropdown-${label}`)
+          "
+        >
+          <bx-dropdown-item
+            v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
+            :key="subItemLabel"
+            :value="label"
+          >
+            <a :href="subItemUrl">{{ subItemLabel }}</a>
+          </bx-dropdown-item>
+        </bx-dropdown>
       </li>
     </ul>
   </nav>
@@ -25,9 +37,91 @@
 <script lang="ts">
 import { defineComponent } from "vue-demi";
 import { NAME_NAVBAR } from "../../constants/components";
+import "../../../node_modules/carbon-web-components/es/components/dropdown";
+
+interface SegmentData {
+  cta: string;
+  location: string;
+}
+
+interface NavLink {
+  label: string;
+  url: string;
+  segment: SegmentData;
+}
+
+interface DropdownNavItem {
+  label: string;
+  subItems: NavLink[];
+}
 
 export default defineComponent({
   name: NAME_NAVBAR,
+
+  data: () => ({
+    navItems: [
+      {
+        label: "Overview",
+        url: "/overview",
+        segment: {
+          cta: "overview",
+          location: "menu",
+        },
+      } as NavLink,
+      {
+        label: "Learn",
+        url: "/learn",
+        segment: {
+          cta: "learn",
+          location: "menu",
+        },
+      } as NavLink,
+      {
+        label: "Community",
+        subItems: [
+          {
+            label: "Events",
+            url: "/events",
+            segment: {
+              cta: "events",
+              location: "menu",
+            },
+          },
+          {
+            label: "Advocates",
+            url: "/advocates",
+            segment: {
+              cta: "advocates",
+              location: "menu",
+            },
+          },
+        ],
+      } as DropdownNavItem,
+      {
+        label: "Documentation",
+        url: "/documentation",
+        segment: {
+          cta: "documentation",
+          location: "menu",
+        },
+      } as NavLink,
+    ] as NavLink[] | DropdownNavItem[],
+  }),
+
+  methods: {
+    onDropdownBeingSelected(dropdownRef: string) {
+      this.closeDropdown(dropdownRef);
+    },
+
+    closeDropdown(dropdownRef: string) {
+      interface DropdownElement {
+        open: boolean;
+      }
+
+      const dropdownElement = this.$refs[dropdownRef] as DropdownElement;
+      dropdownElement.open = false;
+    },
+  },
 });
 </script>
 
@@ -67,6 +161,7 @@ export default defineComponent({
   }
 
   &__nav-item {
+    display: flex;
     margin: 0;
   }
 
