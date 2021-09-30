@@ -172,8 +172,17 @@ $nav-item--spacing-x: $spacing-06;
   justify-content: space-between;
   width: 100%;
 
+  @media (max-width: 1050px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: $nav-item--height 1fr;
+    grid-template-areas: "logo toggler" "nav nav";
+  }
+
   &__collapse {
     @media (max-width: 1050px) {
+      grid-area: nav;
+
       &:not(.show) {
         display: none;
       }
@@ -199,9 +208,17 @@ $nav-item--spacing-x: $spacing-06;
     list-style: none;
     margin: 0;
     padding-left: 0;
+
+    @media (max-width: 1050px) {
+      flex-direction: column;
+    }
   }
 
   &__nav-dropdown {
+    @media (max-width: 1050px) {
+      width: 100%;
+    }
+
     &:hover {
       text-decoration: underline;
     }
@@ -242,6 +259,11 @@ $nav-item--spacing-x: $spacing-06;
   &__nav-item {
     display: flex;
     margin: 0;
+
+    @media (max-width: 1050px) {
+      border-bottom: 1px solid $cool-gray-20;
+      height: $nav-item--height;
+    }
   }
 
   &__nav-link {
@@ -250,6 +272,10 @@ $nav-item--spacing-x: $spacing-06;
     display: flex;
     height: $nav-item--height;
     padding: 0 $nav-item--spacing-x;
+
+    @media (max-width: 1050px) {
+      width: 100%;
+    }
 
     &:hover {
       text-decoration: underline;
