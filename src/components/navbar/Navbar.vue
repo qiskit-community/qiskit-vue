@@ -15,6 +15,7 @@
 
         <bx-dropdown
           v-else
+          class="navbar__nav-dropdown"
           :trigger-content="label"
           :ref="`dropdown-${label}`"
           @bx-dropdown-beingselected.prevent="
@@ -130,6 +131,10 @@ export default defineComponent({
 @import "@carbon/layout/scss/layout";
 @import "@carbon/type/scss/type";
 
+$nav-item--color: $cool-gray-80;
+$nav-item--height: 3.5rem;
+$nav-item--spacing-x: $spacing-06;
+
 .navbar {
   @include carbon--type-style("body-long-02");
 
@@ -160,14 +165,34 @@ export default defineComponent({
     padding-left: 0;
   }
 
+  &__nav-dropdown {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::part(trigger-button) {
+      --cds-body-short-01-font-size: 1rem;
+      --cds-body-short-01-letter-spacing: 0;
+      --cds-body-short-01-line-height: 1.5;
+      --cds-text-01: #{$nav-item--color};
+
+      background-color: $white-0;
+      height: $nav-item--height;
+      padding-left: $nav-item--spacing-x;
+    }
+  }
+
   &__nav-item {
     display: flex;
     margin: 0;
   }
 
   &__nav-link {
-    color: $cool-gray-80;
-    padding: $spacing-05 $spacing-06;
+    align-items: center;
+    color: $nav-item--color;
+    display: flex;
+    height: $nav-item--height;
+    padding: 0 $nav-item--spacing-x;
 
     &:hover {
       text-decoration: underline;
