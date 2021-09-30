@@ -5,44 +5,58 @@
       class="navbar__logo"
       src="../../assets/img/logo.svg"
     />
-    <ul class="navbar__nav">
-      <li
-        v-for="{ label, subItems, url } in navItems"
-        :key="label"
-        class="navbar__nav-item"
-      >
-        <a
-          v-if="!subItems"
-          class="navbar__nav-link"
-          :href="url"
-          v-text="label"
-        />
 
-        <bx-dropdown
-          v-else
-          class="navbar__nav-dropdown"
-          :trigger-content="label"
-          :ref="`dropdown-${label}`"
-          @bx-dropdown-beingselected.prevent="
-            onDropdownBeingSelected(`dropdown-${label}`)
-          "
+    <button
+      class="navbar__toggler"
+      type="button"
+      @click="showCollapsedMenu = !showCollapsedMenu"
+    >
+      Show menu: {{ showCollapsedMenu }}
+    </button>
+
+    <div class="navbar__collapse" :class="{ show: showCollapsedMenu }">
+      <ul class="navbar__nav">
+        <li
+          v-for="{ label, subItems, url } in navItems"
+          :key="label"
+          class="navbar__nav-item"
         >
           <a
-            v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
-            :key="subItemLabel"
-            class="navbar__nav-subitem"
-            :href="subItemUrl"
+            v-if="!subItems"
+            class="navbar__nav-link"
+            :href="url"
+            v-text="label"
+          />
+
+          <bx-dropdown
+            v-else
+            class="navbar__nav-dropdown"
+            :trigger-content="label"
+            :ref="`dropdown-${label}`"
+            @bx-dropdown-beingselected.prevent="
+              onDropdownBeingSelected(`dropdown-${label}`)
+            "
           >
-            <bx-dropdown-item class="navbar__nav-dropdown-item" :value="label">
-              <span
-                class="navbar__nav-dropdown-item-text"
-                v-text="subItemLabel"
-              />
-            </bx-dropdown-item>
-          </a>
-        </bx-dropdown>
-      </li>
-    </ul>
+            <a
+              v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
+              :key="subItemLabel"
+              class="navbar__nav-subitem"
+              :href="subItemUrl"
+            >
+              <bx-dropdown-item
+                class="navbar__nav-dropdown-item"
+                :value="label"
+              >
+                <span
+                  class="navbar__nav-dropdown-item-text"
+                  v-text="subItemLabel"
+                />
+              </bx-dropdown-item>
+            </a>
+          </bx-dropdown>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -118,6 +132,7 @@ export default defineComponent({
         },
       } as NavLink,
     ] as NavLink[] | DropdownNavItem[],
+    showCollapsedMenu: false,
   }),
 
   methods: {
@@ -153,8 +168,17 @@ $nav-item--spacing-x: $spacing-06;
   align-items: center;
   display: flex;
   font-family: carbon--font-family("sans");
+  height: $nav-item--height;
   justify-content: space-between;
   width: 100%;
+
+  &__collapse {
+    @media (max-width: 1050px) {
+      &:not(.show) {
+        display: none;
+      }
+    }
+  }
 
   &__logo {
     $filter--cool-gray-80: invert(18%) sepia(16%) saturate(391%)
@@ -249,6 +273,12 @@ $nav-item--spacing-x: $spacing-06;
     &:hover {
       background-color: $cool-gray-20;
       text-decoration: underline;
+    }
+  }
+
+  &__toggler {
+    @media (min-width: 1051px) {
+      display: none;
     }
   }
 }
