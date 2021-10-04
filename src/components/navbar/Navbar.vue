@@ -1,10 +1,12 @@
 <template>
   <nav class="navbar">
-    <img
-      alt="Qiskit logo"
-      class="navbar__logo"
-      src="../../assets/img/logo.svg"
-    />
+    <QiskitBasicLink :url="homeLink.url">
+      <img
+        alt="Qiskit logo"
+        class="navbar__logo"
+        src="../../assets/img/logo.svg"
+      />
+    </QiskitBasicLink>
 
     <button
       class="navbar__toggler"
@@ -21,10 +23,10 @@
           :key="label"
           class="navbar__nav-item"
         >
-          <a
+          <QiskitBasicLink
             v-if="!subItems"
             class="navbar__nav-link"
-            :href="url"
+            :url="url"
             v-text="label"
           />
 
@@ -37,11 +39,11 @@
               onDropdownBeingSelected(`dropdown-${label}`)
             "
           >
-            <a
+            <QiskitBasicLink
               v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
               :key="subItemLabel"
               class="navbar__nav-subitem"
-              :href="subItemUrl"
+              :url="subItemUrl"
             >
               <bx-dropdown-item
                 class="navbar__nav-dropdown-item"
@@ -52,7 +54,7 @@
                   v-text="subItemLabel"
                 />
               </bx-dropdown-item>
-            </a>
+            </QiskitBasicLink>
           </bx-dropdown>
         </li>
       </ul>
@@ -62,8 +64,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue-demi";
+import { QiskitBasicLink } from "../basic-link";
 import { NAME_NAVBAR } from "../../constants/components";
-import "../../../node_modules/carbon-web-components/es/components/dropdown";
 
 interface SegmentData {
   cta: string;
@@ -84,7 +86,17 @@ interface DropdownNavItem {
 export default defineComponent({
   name: NAME_NAVBAR,
 
+  components: { QiskitBasicLink },
+
   data: () => ({
+    homeLink: {
+      url: "/",
+      segment: {
+        cta: "home",
+        location: "menu",
+      },
+    } as NavLink,
+
     navItems: [
       {
         label: "Overview",
@@ -132,6 +144,7 @@ export default defineComponent({
         },
       } as NavLink,
     ] as NavLink[] | DropdownNavItem[],
+
     showCollapsedMenu: false,
   }),
 
@@ -145,7 +158,9 @@ export default defineComponent({
         open: boolean;
       }
 
-      const dropdownElement = this.$refs[dropdownRef] as DropdownElement;
+      const dropdownElement = this.$refs[
+        dropdownRef
+      ] as unknown as DropdownElement;
       dropdownElement.open = false;
     },
   },
