@@ -5,7 +5,8 @@
     </QiskitBasicLink>
 
     <button class="navbar__toggler" type="button" @click="toggleCollapsedMenu">
-      Show menu: {{ showCollapsedMenu }}
+      <QiskitIconClose v-if="showCollapsedMenu" class="navbar__toggler__icon" />
+      <QiskitIconMenu v-else class="navbar__toggler__icon" />
     </button>
 
     <div class="navbar__collapse" :class="{ show: showCollapsedMenu }">
@@ -57,6 +58,7 @@
 <script lang="ts">
 import { defineComponent } from "vue-demi";
 import { QiskitBasicLink } from "../basic-link";
+import { QiskitIconClose, QiskitIconMenu } from "../icons";
 import { QiskitLogo } from "../logo";
 import { NAME_NAVBAR } from "../../constants/components";
 
@@ -79,7 +81,7 @@ interface DropdownNavItem {
 export default defineComponent({
   name: NAME_NAVBAR,
 
-  components: { QiskitBasicLink, QiskitLogo },
+  components: { QiskitBasicLink, QiskitIconClose, QiskitIconMenu, QiskitLogo },
 
   data: () => ({
     homeLink: {
@@ -210,7 +212,7 @@ $nav-item--spacing-x: $spacing-06;
 
   @include carbon--breakpoint-down("lg") {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-rows: $nav-item--height 1fr;
     grid-template-areas: "logo toggler" "nav nav";
 
@@ -385,8 +387,18 @@ $nav-item--spacing-x: $spacing-06;
   }
 
   &__toggler {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
     @include carbon--breakpoint-up("lg") {
       display: none;
+    }
+
+    &__icon {
+      fill: $nav-item--color;
+      height: 1.25rem;
     }
   }
 }
