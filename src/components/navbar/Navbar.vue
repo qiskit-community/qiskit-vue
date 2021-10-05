@@ -249,14 +249,17 @@ $nav-item--spacing-x: $spacing-06;
   }
 
   &__logo {
-    $filter--cool-gray-80: invert(18%) sepia(16%) saturate(391%)
-      hue-rotate(165deg) brightness(97%) contrast(87%);
-    filter: $filter--cool-gray-80;
+    $filter--cool-gray-60: invert(45%) sepia(16%) saturate(225%)
+      hue-rotate(169deg) brightness(91%) contrast(85%);
+    $filter--purple-70: invert(19%) sepia(79%) saturate(6925%)
+      hue-rotate(265deg) brightness(81%) contrast(87%);
+
+    display: flex;
+    filter: $filter--cool-gray-60;
     height: 1.5rem;
+    margin-left: $nav-item--spacing-x;
 
     &_active {
-      $filter--purple-70: invert(19%) sepia(79%) saturate(6925%)
-        hue-rotate(265deg) brightness(81%) contrast(87%);
       filter: $filter--purple-70;
     }
   }
