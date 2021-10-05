@@ -8,11 +8,7 @@
       />
     </QiskitBasicLink>
 
-    <button
-      class="navbar__toggler"
-      type="button"
-      @click="showCollapsedMenu = !showCollapsedMenu"
-    >
+    <button class="navbar__toggler" type="button" @click="toggleCollapsedMenu">
       Show menu: {{ showCollapsedMenu }}
     </button>
 
@@ -163,9 +159,36 @@ export default defineComponent({
       ] as unknown as DropdownElement;
       dropdownElement.open = false;
     },
+
+    toggleCollapsedMenu() {
+      this.showCollapsedMenu = !this.showCollapsedMenu;
+
+      const body = document.querySelector("body");
+
+      if (body) {
+        if (this.showCollapsedMenu) {
+          body.classList.add("no-scroll-until-lg");
+          body.scrollIntoView(true);
+        } else {
+          body.classList.remove("no-scroll-until-lg");
+        }
+      }
+    },
   },
 });
 </script>
+
+<style lang="scss">
+@import "@carbon/layout/scss/layout";
+
+body {
+  &.no-scroll-until-lg {
+    @include carbon--breakpoint-down("lg") {
+      overflow: hidden;
+    }
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 @import "@carbon/colors/scss/colors";
@@ -184,7 +207,7 @@ $nav-item--spacing-x: $spacing-06;
   align-items: center;
   display: flex;
   font-family: carbon--font-family("sans");
-  height: $nav-item--height;
+  min-height: $nav-item--height;
   justify-content: space-between;
   width: 100%;
 
@@ -198,6 +221,10 @@ $nav-item--spacing-x: $spacing-06;
   &__collapse {
     @include carbon--breakpoint-down("lg") {
       grid-area: nav;
+
+      &.show {
+        height: calc(100vh - #{$nav-item--height});
+      }
 
       &:not(.show) {
         display: none;
