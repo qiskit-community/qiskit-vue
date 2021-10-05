@@ -396,8 +396,9 @@ $nav-item--spacing-x: $spacing-06;
   &__toggler {
     background: none;
     border: none;
-    padding: 0;
     cursor: pointer;
+    padding: 0;
+    margin-right: $nav-item--spacing-x;
 
     @include carbon--breakpoint-up("lg") {
       display: none;
