@@ -216,18 +216,35 @@ $nav-item--spacing-x: $spacing-06;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: $nav-item--height 1fr;
     grid-template-areas: "logo toggler" "nav nav";
+
+    @include carbon--breakpoint-up("md") {
+      height: $nav-item--height;
+    }
   }
 
   &__collapse {
     @include carbon--breakpoint-down("lg") {
       grid-area: nav;
 
-      &.show {
-        height: calc(100vh - #{$nav-item--height});
-      }
-
       &:not(.show) {
         display: none;
+      }
+    }
+
+    &.show {
+      @include carbon--breakpoint-down("lg") {
+        background-color: $white-0;
+        box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+        height: calc(100vh - #{$nav-item--height});
+        margin-left: auto;
+        width: 12rem;
+        z-index: 1000;
+      }
+
+      @include carbon--breakpoint-down("md") {
+        box-shadow: none;
+        margin-left: initial;
+        width: 100%;
       }
     }
   }
