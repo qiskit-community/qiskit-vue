@@ -277,6 +277,8 @@ $nav-item--spacing-x: $spacing-06;
   }
 
   &__nav-dropdown {
+    height: $nav-item--height;
+
     @include carbon--breakpoint-down("lg") {
       width: 100%;
     }
@@ -352,6 +354,7 @@ $nav-item--spacing-x: $spacing-06;
     display: flex;
     height: $nav-item--height;
     padding: 0 $nav-item--spacing-x;
+    text-decoration: none;
 
     @include carbon--breakpoint-down("lg") {
       width: 100%;
@@ -372,6 +375,7 @@ $nav-item--spacing-x: $spacing-06;
     display: flex;
     height: $nav-item--height;
     padding: 0 $spacing-03;
+    text-decoration: none;
     width: 100%;
 
     &:last-child {
