@@ -1,11 +1,7 @@
 <template>
   <nav class="navbar">
     <QiskitBasicLink :url="homeLink.url">
-      <img
-        alt="Qiskit logo"
-        class="navbar__logo"
-        src="../../assets/img/logo.svg"
-      />
+      <QiskitLogo class="navbar__logo" />
     </QiskitBasicLink>
 
     <button class="navbar__toggler" type="button" @click="toggleCollapsedMenu">
@@ -61,6 +57,7 @@
 <script lang="ts">
 import { defineComponent } from "vue-demi";
 import { QiskitBasicLink } from "../basic-link";
+import { QiskitLogo } from "../logo";
 import { NAME_NAVBAR } from "../../constants/components";
 
 interface SegmentData {
@@ -82,7 +79,7 @@ interface DropdownNavItem {
 export default defineComponent({
   name: NAME_NAVBAR,
 
-  components: { QiskitBasicLink },
+  components: { QiskitBasicLink, QiskitLogo },
 
   data: () => ({
     homeLink: {
