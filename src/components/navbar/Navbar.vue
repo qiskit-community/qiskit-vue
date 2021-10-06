@@ -263,6 +263,7 @@ $nav-item--spacing-x: $spacing-06;
   @include carbon--type-style("body-long-02");
 
   align-items: center;
+  border-bottom: $nav-item--border;
   display: flex;
   font-family: carbon--font-family("sans");
   min-height: $nav-item--height;
