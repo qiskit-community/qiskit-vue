@@ -16,8 +16,6 @@ jobs:
         shell: bash
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short ${{ github.event.pull_request.head.sha }})"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Install dependencies
         run: npm ci
       - name: Publish to Chromatic
