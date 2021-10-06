@@ -51,6 +51,26 @@
           </bx-dropdown>
         </li>
       </ul>
+
+      <footer class="navbar__footer">
+        <div class="navbar__footer__social-links">
+          <h4 class="navbar__footer__social-links__title">Stay Connected</h4>
+          <div class="navbar__footer__social-links__icons">
+            <a
+              v-for="{ icon, label, url } in socialMediaLinks"
+              :key="label"
+              class="navbar__footer__social-links__icons__icon"
+              :href="url"
+              rel="noopener"
+              target="_blank"
+              :title="label"
+            >
+              <component :is="icon" />
+            </a>
+          </div>
+        </div>
+        <div class="navbar__footer__notice">© Qiskit | All Rights Reserved</div>
+      </footer>
     </div>
   </nav>
 </template>
@@ -58,7 +78,14 @@
 <script lang="ts">
 import { defineComponent } from "vue-demi";
 import { QiskitBasicLink } from "../basic-link";
-import { QiskitIconClose, QiskitIconMenu } from "../icons";
+import {
+  QiskitIconClose,
+  QiskitIconMedium,
+  QiskitIconMenu,
+  QiskitIconSlack,
+  QiskitIconTwitter,
+  QiskitIconYoutube,
+} from "../icons";
 import { QiskitLogo } from "../logo";
 import { NAME_NAVBAR } from "../../constants/components";
 
@@ -81,7 +108,16 @@ interface DropdownNavItem {
 export default defineComponent({
   name: NAME_NAVBAR,
 
-  components: { QiskitBasicLink, QiskitIconClose, QiskitIconMenu, QiskitLogo },
+  components: {
+    QiskitBasicLink,
+    QiskitIconClose,
+    QiskitIconMedium,
+    QiskitIconMenu,
+    QiskitIconSlack,
+    QiskitIconTwitter,
+    QiskitIconYoutube,
+    QiskitLogo,
+  },
 
   data: () => ({
     homeLink: {
@@ -141,6 +177,29 @@ export default defineComponent({
     ] as NavLink[] | DropdownNavItem[],
 
     showCollapsedMenu: false,
+
+    socialMediaLinks: [
+      {
+        icon: QiskitIconTwitter,
+        label: "Twitter",
+        url: "https://twitter.com/Qiskit",
+      },
+      {
+        icon: QiskitIconSlack,
+        label: "Slack",
+        url: "https://ibm.co/joinqiskitslack",
+      },
+      {
+        icon: QiskitIconYoutube,
+        label: "YouTube",
+        url: "https://www.youtube.com/Qiskit",
+      },
+      {
+        icon: QiskitIconMedium,
+        label: "Medium",
+        url: "https://medium.com/Qiskit",
+      },
+    ],
   }),
 
   methods: {
@@ -230,6 +289,11 @@ $nav-item--spacing-x: $spacing-06;
       }
     }
 
+    @include carbon--breakpoint-down("md") {
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
     &.show {
       @include carbon--breakpoint-down("lg") {
         background-color: $white-0;
@@ -244,6 +308,44 @@ $nav-item--spacing-x: $spacing-06;
         box-shadow: none;
         margin-left: initial;
         width: 100%;
+      }
+    }
+  }
+
+  &__footer {
+    color: $cool-gray-60;
+    display: block;
+    margin-bottom: $spacing-08;
+    padding: 0;
+
+    @include carbon--breakpoint-up("md") {
+      display: none;
+    }
+
+    &__notice {
+      @include carbon--type-style("caption-01");
+
+      background: $cool-gray-10;
+      padding: $spacing-05 $nav-item--spacing-x;
+    }
+
+    &__social-links {
+      padding: $spacing-05 $nav-item--spacing-x;
+
+      &__icons {
+        display: grid;
+        gap: $spacing-03 $spacing-05;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: start;
+
+        &__icon {
+          color: $cool-gray-60;
+        }
+      }
+
+      &__title {
+        @include carbon--type-style("expressive-heading-01");
       }
     }
   }
