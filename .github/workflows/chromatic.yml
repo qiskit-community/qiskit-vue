@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Declare commit hash variable
+        id: commit
+        shell: bash
+        run: |
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Install dependencies
         run: npm ci
       - name: Publish to Chromatic
@@ -27,5 +32,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "A new Storybook preview has been published! :rocket: \n * Link to the build: ${{ steps.publish.outputs.buildUrl }}"
+              body: "A new Storybook preview has been published! :rocket: \n * Storybook preview: ${{ steps.commit.outputs.sha_short }} \n * Chromatic build: ${{ steps.publish.outputs.buildUrl }}"
             })
