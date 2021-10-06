@@ -298,16 +298,20 @@ $nav-item--spacing-x: $spacing-06;
     &.show {
       @include carbon--breakpoint-down("lg") {
         background-color: $white-0;
+        border-top: 1px solid $white-0;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
         height: calc(100vh - #{$nav-item--height});
         margin-left: auto;
+        margin-top: -1px;
         width: 12rem;
         z-index: 1000;
       }
 
       @include carbon--breakpoint-down("md") {
+        border-top: none;
         box-shadow: none;
         margin-left: initial;
+        margin-top: initial;
         width: 100%;
       }
     }
