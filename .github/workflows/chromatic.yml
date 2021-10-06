@@ -1,9 +1,6 @@
 name: "Chromatic Deployment"
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
