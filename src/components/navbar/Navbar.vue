@@ -117,6 +117,7 @@ export default defineComponent({
     QiskitIconTwitter,
     QiskitIconYoutube,
     QiskitLogo,
+    // TODO: Add Carbon's Dropdown component to the Navbar component #31
   },
 
   data: () => ({
