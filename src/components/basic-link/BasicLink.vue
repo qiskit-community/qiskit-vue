@@ -1,11 +1,11 @@
 <template>
   <component
+    :class="{'basic-link_has-link': hasLink }"
     :is="isNuxtLink ? 'nuxt-link' : 'a'"
-    :href="isAnchor && url"
-    :to="isNuxtLink && url"
-    :style="hasLink && 'cursor:pointer'"
-    :rel="isExternal && 'noopener'"
-    :target="isExternal && '_blank'"
+    :href="url"
+    :to="isNuxtLink ? url : null"
+    :rel="isExternal ? 'noopener' : null"
+    :target="isExternal ? '_blank' : null"
     @click="
       $emit('click');
       segment && $trackClickEvent(segment.cta, segment.location);
@@ -64,9 +64,40 @@ export default defineComponent({
       return !!this.url && this.url.startsWith("mailto");
     },
 
+    /**
+     * Whether Vue.js is running in Nuxt.
+     */
+    isNuxt(): boolean {
+      if (process) {
+        interface ProcessEnhanced extends NodeJS.Process {
+          client: boolean;
+        }
+
+        const processEnhanced: ProcessEnhanced = process as ProcessEnhanced;
+
+        if (processEnhanced.client) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+
     isNuxtLink(): boolean {
+      if (!this.isNuxt) {
+        return false;
+      }
+
       return !this.isAnchor;
     },
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.basic-link {
+  &_has-link {
+    cursor: pointer;
+  }
+}
+</style>
