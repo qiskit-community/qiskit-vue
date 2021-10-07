@@ -1,9 +1,9 @@
 <template>
   <component
+    :class="{'basic-link_has-link': hasLink }"
     :is="isNuxtLink ? 'nuxt-link' : 'a'"
     :href="url"
     :to="isNuxtLink ? url : null"
-    :style="hasLink ? 'cursor:pointer' : null"
     :rel="isExternal ? 'noopener' : null"
     :target="isExternal ? '_blank' : null"
     @click="
@@ -93,3 +93,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.basic-link {
+  &._has-link {
+    cursor: pointer;
+  }
+}
+</style>
