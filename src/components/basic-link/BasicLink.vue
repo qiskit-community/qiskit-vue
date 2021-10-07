@@ -96,7 +96,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .basic-link {
-  &._has-link {
+  &_has-link {
     cursor: pointer;
   }
 }
