@@ -50,8 +50,49 @@
             </QiskitBasicLink>
           </bx-dropdown>
         </li>
+        <li class="navbar__nav-item navbar__nav-item__profile">
+          <div
+            class="navbar__profile"
+            :class="{
+              navbar__profile__expanded: showMobileUserProfileMenu,
+            }"
+          >
+            <bx-btn
+              class="navbar__profile__button"
+              @click="toggleMobileUserProfileMenu"
+            >
+              <QiskitIconUser class="navbar__profile__icon" />
+            </bx-btn>
+          </div>
+          <div
+            class="navbar__profile-mobile"
+            :class="{
+              'navbar__profile-mobile__expanded': showMobileUserProfileMenu,
+            }"
+          >
+            <bx-btn
+              class="navbar__profile-mobile__button"
+              kind="ghost"
+              @click="toggleMobileUserProfileMenu"
+            >
+              <div class="navbar__profile-mobile__label">
+                <QiskitIconUser class="navbar__profile-mobile__user-icon" />
+                <span>Profile</span>
+              </div>
+              <QiskitIconChevronDown
+                class="navbar__profile-mobile__chevron-icon"
+              />
+            </bx-btn>
+            <QiskitBasicLink
+              v-if="showMobileUserProfileMenu"
+              class="navbar__nav-link"
+              :url="'/'"
+            >
+              User Profile
+            </QiskitBasicLink>
+          </div>
+        </li>
       </ul>
-
       <footer class="navbar__footer">
         <div class="navbar__footer__social-links">
           <h4 class="navbar__footer__social-links__title">Stay Connected</h4>
@@ -79,11 +120,13 @@
 import { defineComponent } from "vue-demi";
 import { QiskitBasicLink } from "../basic-link";
 import {
+  QiskitIconChevronDown,
   QiskitIconClose,
   QiskitIconMedium,
   QiskitIconMenu,
   QiskitIconSlack,
   QiskitIconTwitter,
+  QiskitIconUser,
   QiskitIconYoutube,
 } from "../icons";
 import { QiskitLogo } from "../logo";
@@ -109,12 +152,14 @@ export default defineComponent({
   name: NAME_NAVBAR,
 
   components: {
+    QiskitIconChevronDown,
     QiskitBasicLink,
     QiskitIconClose,
     QiskitIconMedium,
     QiskitIconMenu,
     QiskitIconSlack,
     QiskitIconTwitter,
+    QiskitIconUser,
     QiskitIconYoutube,
     QiskitLogo,
     // TODO: Add Carbon's Dropdown component to the Navbar component #31
@@ -201,6 +246,8 @@ export default defineComponent({
         url: "https://medium.com/Qiskit",
       },
     ],
+
+    showMobileUserProfileMenu: false,
   }),
 
   methods: {
@@ -232,6 +279,10 @@ export default defineComponent({
           body.classList.remove("no-scroll-until-lg");
         }
       }
+    },
+
+    toggleMobileUserProfileMenu() {
+      this.showMobileUserProfileMenu = !this.showMobileUserProfileMenu;
     },
   },
 });
@@ -454,6 +505,10 @@ $nav-item--spacing-x: $spacing-06;
       border-bottom: $nav-item--border;
       min-height: $nav-item--height;
     }
+
+    &__profile {
+      position: relative;
+    }
   }
 
   &__nav-link {
@@ -465,7 +520,7 @@ $nav-item--spacing-x: $spacing-06;
     text-decoration: none;
 
     @include carbon--breakpoint-down("lg") {
-      width: 100%;
+      max-width: 100%;
     }
 
     &:hover {
@@ -515,6 +570,123 @@ $nav-item--spacing-x: $spacing-06;
     &__icon {
       fill: $nav-item--color;
       height: 1.25rem;
+    }
+  }
+
+  &__profile {
+    .navbar__profile__button {
+      @include carbon--breakpoint-down("lg") {
+        display: none;
+      }
+
+      .navbar__profile__icon {
+        height: 2rem;
+        border: 2px solid $white-0;
+        border-radius: 50%;
+        fill: $white-0;
+        box-sizing: border-box;
+      }
+
+      &::part(button) {
+        background-color: $carbon--purple-70;
+        transition: background-color 70ms cubic-bezier(0, 0, 0.38, 0.9) 0s;
+        padding-right: 15px;
+
+        &:focus {
+          border-color: $carbon--purple-70;
+          box-shadow: initial;
+        }
+
+        &:hover {
+          background-color: $carbon--purple-80;
+        }
+      }
+    }
+
+    &-mobile {
+      width: 100%;
+
+      .navbar__profile-mobile__button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        max-width: none;
+        &::part(button) {
+          color: $nav-item--color;
+          height: $nav-item--height;
+          border-color: transparent;
+          box-shadow: initial;
+
+          &:hover {
+            background-color: $white-0;
+          }
+        }
+        @include carbon--breakpoint-up("lg") {
+          display: none;
+        }
+      }
+
+      &__expanded {
+        @include carbon--breakpoint-up("lg") {
+          position: absolute;
+          top: $nav-item--height;
+          right: 0;
+          width: 16rem;
+        }
+
+        .navbar__profile-mobile__button {
+          &::part(button) {
+            &:active,
+            &:focus {
+              border-color: transparent;
+              box-shadow: initial;
+              border-bottom: 1px solid $carbon--purple-70;
+            }
+          }
+        }
+
+        .navbar__profile-mobile__user-icon {
+          fill: $carbon--purple-70;
+          border-color: $carbon--purple-70;
+        }
+
+        .navbar__profile-mobile__label {
+          color: $carbon--purple-70;
+        }
+
+        .navbar__profile-mobile__chevron-icon {
+          transform: rotate(-180deg);
+        }
+
+        .navbar__nav-link {
+          background-color: $cool-gray-10;
+          border: none;
+          border-top: $nav-item--border;
+
+          &:hover {
+            background-color: $cool-gray-20;
+          }
+        }
+      }
+
+      &__label {
+        @include carbon--type-style("body-long-02");
+        display: flex;
+        align-items: center;
+      }
+
+      &__user-icon {
+        height: 1rem;
+        border: 1px solid $nav-item--color;
+        padding: 1px;
+        border-radius: 50%;
+        margin-right: $spacing-03;
+      }
+
+      &__chevron-icon {
+        height: 1rem;
+      }
     }
   }
 }
