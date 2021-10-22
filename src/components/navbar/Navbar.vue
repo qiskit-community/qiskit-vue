@@ -51,30 +51,34 @@
             </QiskitBasicLink>
           </bx-dropdown>
         </li>
-        <li class="navbar__nav-item navbar__nav-item__profile">
+        <li class="navbar__nav-item">
           <div
-            class="navbar__profile"
+            class="navbar__user-profile-dropdown"
             :class="{
-              navbar__profile__expanded: showMobileUserProfileMenu,
+              navbar__profile_expanded: showUserProfileMenu,
             }"
           >
             <bx-btn
-              class="navbar__profile__button"
+              class="navbar__profile__toggler"
               @click="toggleMobileUserProfileMenu"
+              aria-controls="mobile-profile-menu"
             >
               <QiskitIconUser class="navbar__profile__icon" />
             </bx-btn>
           </div>
           <div
+            id="mobile-profile-menu"
             class="navbar__profile-mobile"
+            :aria-expanded="showUserProfileMenu"
             :class="{
-              'navbar__profile-mobile__expanded': showMobileUserProfileMenu,
+              'navbar__profile-mobile_expanded': showUserProfileMenu,
             }"
           >
             <bx-btn
-              class="navbar__profile-mobile__button"
+              class="navbar__profile-mobile__toggler"
               kind="ghost"
               @click="toggleMobileUserProfileMenu"
+              tabindex="0"
             >
               <div class="navbar__profile-mobile__label">
                 <QiskitIconUser class="navbar__profile-mobile__user-icon" />
@@ -85,7 +89,7 @@
               />
             </bx-btn>
             <QiskitBasicLink
-              v-if="showMobileUserProfileMenu"
+              v-if="showUserProfileMenu"
               class="navbar__nav-link"
               :url="'/'"
             >
@@ -248,7 +252,7 @@ export default defineComponent({
       },
     ],
 
-    showMobileUserProfileMenu: false,
+    showUserProfileMenu: false,
   }),
 
   methods: {
@@ -257,7 +261,7 @@ export default defineComponent({
     },
 
     onDropdownBeingToggled() {
-      this.showMobileUserProfileMenu = false;
+      this.showUserProfileMenu = false;
     },
 
     closeDropdown(dropdownRef: string) {
@@ -287,7 +291,7 @@ export default defineComponent({
     },
 
     toggleMobileUserProfileMenu() {
-      this.showMobileUserProfileMenu = !this.showMobileUserProfileMenu;
+      this.showUserProfileMenu = !this.showUserProfileMenu;
     },
   },
 });
@@ -505,14 +509,11 @@ $nav-item--spacing-x: $spacing-06;
   &__nav-item {
     display: flex;
     margin: 0;
+    position: relative;
 
     @include carbon--breakpoint-down("lg") {
       border-bottom: $nav-item--border;
       min-height: $nav-item--height;
-    }
-
-    &__profile {
-      position: relative;
     }
   }
 
@@ -578,7 +579,7 @@ $nav-item--spacing-x: $spacing-06;
   }
 
   &__profile {
-    .navbar__profile__button {
+    &__toggler {
       @include carbon--breakpoint-down("lg") {
         display: none;
       }
@@ -606,16 +607,19 @@ $nav-item--spacing-x: $spacing-06;
         }
       }
     }
-
     &-mobile {
       width: 100%;
 
-      .navbar__profile-mobile__button {
+      .navbar__profile-mobile__toggler {
         display: flex;
         align-items: center;
         justify-content: space-between;
         text-decoration: none;
         max-width: none;
+        &:focus {
+          outline: 2px solid #0f62fe;
+          outline-offset: -2px;
+        }
         &::part(button) {
           color: $nav-item--color;
           height: $nav-item--height;
@@ -631,7 +635,7 @@ $nav-item--spacing-x: $spacing-06;
         }
       }
 
-      &__expanded {
+      &_expanded {
         @include carbon--breakpoint-up("lg") {
           position: absolute;
           top: $nav-item--height;
@@ -639,7 +643,7 @@ $nav-item--spacing-x: $spacing-06;
           width: 16rem;
         }
 
-        .navbar__profile-mobile__button {
+        .navbar__profile-mobile__toggler {
           &::part(button) {
             &:active,
             &:focus {
