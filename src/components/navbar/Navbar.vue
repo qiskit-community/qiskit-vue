@@ -31,7 +31,7 @@
             @bx-dropdown-beingselected.prevent="
               onDropdownBeingSelected(`dropdown-${label}`)
             "
-            @bx-dropdown-beingtoggled="onDropdownBeingToggled()"
+            @bx-dropdown-beingtoggled="onDropdownBeingToggled"
           >
             <QiskitBasicLink
               v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
