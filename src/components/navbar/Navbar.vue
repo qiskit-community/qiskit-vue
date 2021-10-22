@@ -315,6 +315,7 @@ body {
 @import "@carbon/type/scss/type";
 
 $nav-dropdown-item--background: $cool-gray-10;
+$nav-dropdown-item-width: 12rem;
 $nav-item--border: 1px solid $cool-gray-20;
 $nav-item--color: $cool-gray-80;
 $nav-item--height: 3.5rem;
@@ -364,7 +365,7 @@ $nav-item--spacing-x: $spacing-06;
         height: calc(100vh - #{$nav-item--height});
         margin-left: auto;
         margin-top: -1px;
-        width: 12rem;
+        width: $nav-dropdown-item-width;
         z-index: 1000;
       }
 
@@ -640,7 +641,7 @@ $nav-item--spacing-x: $spacing-06;
           position: absolute;
           top: $nav-item--height;
           right: 0;
-          width: 16rem;
+          width: $nav-dropdown-item-width;
         }
 
         .navbar__profile-mobile__toggler {
