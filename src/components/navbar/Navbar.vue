@@ -487,8 +487,6 @@ $nav-item--spacing-x: $spacing-06;
       }
 
       &::part(trigger-button) {
-        background-color: $nav-dropdown-item--background;
-
         @include carbon--breakpoint-down("lg") {
           border-bottom: $nav-item--border;
           margin-bottom: -1px;
