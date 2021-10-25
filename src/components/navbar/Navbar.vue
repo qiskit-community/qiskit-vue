@@ -626,6 +626,7 @@ $nav-item--spacing-x: $spacing-06;
           height: $nav-item--height;
           border-color: transparent;
           box-shadow: initial;
+          padding: 0 1.25rem 0 $spacing-06;
 
           &:hover {
             background-color: $white-0;
