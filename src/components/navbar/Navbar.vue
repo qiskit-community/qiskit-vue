@@ -617,7 +617,7 @@ $nav-item--spacing-x: $spacing-06;
         text-decoration: none;
         max-width: none;
         &:focus {
-          outline: 2px solid #0f62fe;
+          outline: 2px solid$blue-60;
           outline-offset: -2px;
         }
         &::part(button) {
@@ -650,7 +650,8 @@ $nav-item--spacing-x: $spacing-06;
             &:focus {
               border-color: transparent;
               box-shadow: initial;
-              border-bottom: 1px solid $carbon--purple-70;
+              outline: 2px solid $blue-60;
+              outline-offset: -2px;
             }
           }
         }
