@@ -62,6 +62,7 @@
               class="navbar__profile__toggler"
               @click="toggleMobileUserProfileMenu"
               aria-controls="mobile-profile-menu"
+              :aria-expanded="showUserProfileMenu"
             >
               <QiskitIconUser class="navbar__profile__icon" />
             </bx-btn>
@@ -69,7 +70,6 @@
           <div
             id="mobile-profile-menu"
             class="navbar__profile-mobile"
-            :aria-expanded="showUserProfileMenu"
             :class="{
               'navbar__profile-mobile_expanded': showUserProfileMenu,
             }"
