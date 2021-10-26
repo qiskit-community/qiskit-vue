@@ -616,10 +616,12 @@ $nav-item--spacing-x: $spacing-06;
         justify-content: space-between;
         text-decoration: none;
         max-width: none;
+
         &:focus {
-          outline: 2px solid$blue-60;
+          outline: 2px solid $blue-60;
           outline-offset: -2px;
         }
+
         &::part(button) {
           color: $nav-item--color;
           height: $nav-item--height;
