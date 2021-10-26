@@ -676,6 +676,7 @@ $nav-item--spacing-x: $spacing-06;
           background-color: $cool-gray-10;
           border: none;
           border-top: $nav-item--border;
+
           @include carbon--breakpoint-up("lg") {
             box-shadow: $nav-dropdown-item--box-shadow;
           }
