@@ -631,6 +631,7 @@ $nav-item--spacing-x: $spacing-06;
             background-color: $white-0;
           }
         }
+
         @include carbon--breakpoint-up("lg") {
           display: none;
         }
