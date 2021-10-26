@@ -53,16 +53,16 @@
         </li>
         <li class="navbar__nav-item">
           <div
-            class="navbar__user-profile-dropdown"
+            class="navbar__profile-dropdown"
             :class="{
-              navbar__profile_expanded: showUserProfileMenu,
+              navbar__profile_expanded: showProfileMenu,
             }"
           >
             <bx-btn
               class="navbar__profile__toggler"
-              @click="toggleMobileUserProfileMenu"
+              @click="toggleProfileMenu"
               aria-controls="mobile-profile-menu"
-              :aria-expanded="showUserProfileMenu"
+              :aria-expanded="showProfileMenu"
             >
               <QiskitIconUser class="navbar__profile__icon" />
             </bx-btn>
@@ -71,13 +71,13 @@
             id="mobile-profile-menu"
             class="navbar__profile-mobile"
             :class="{
-              'navbar__profile-mobile_expanded': showUserProfileMenu,
+              'navbar__profile-mobile_expanded': showProfileMenu,
             }"
           >
             <bx-btn
               class="navbar__profile-mobile__toggler"
               kind="ghost"
-              @click="toggleMobileUserProfileMenu"
+              @click="toggleProfileMenu"
               tabindex="0"
             >
               <div class="navbar__profile-mobile__label">
@@ -89,7 +89,7 @@
               />
             </bx-btn>
             <QiskitBasicLink
-              v-if="showUserProfileMenu"
+              v-if="showProfileMenu"
               class="navbar__nav-link"
               :url="'/'"
             >
@@ -252,7 +252,7 @@ export default defineComponent({
       },
     ],
 
-    showUserProfileMenu: false,
+    showProfileMenu: false,
   }),
 
   methods: {
@@ -261,7 +261,7 @@ export default defineComponent({
     },
 
     onDropdownBeingToggled() {
-      this.showUserProfileMenu = false;
+      this.showProfileMenu = false;
     },
 
     closeDropdown(dropdownRef: string) {
@@ -290,8 +290,8 @@ export default defineComponent({
       }
     },
 
-    toggleMobileUserProfileMenu() {
-      this.showUserProfileMenu = !this.showUserProfileMenu;
+    toggleProfileMenu() {
+      this.showProfileMenu = !this.showProfileMenu;
     },
   },
 });
@@ -579,17 +579,16 @@ $nav-item--spacing-x: $spacing-06;
   }
 
   &__profile {
+    &__icon {
+      height: 2rem;
+      border: 2px solid $white-0;
+      border-radius: 50%;
+      fill: $white-0;
+      box-sizing: border-box;
+    }
     &__toggler {
       @include carbon--breakpoint-down("lg") {
         display: none;
-      }
-
-      .navbar__profile__icon {
-        height: 2rem;
-        border: 2px solid $white-0;
-        border-radius: 50%;
-        fill: $white-0;
-        box-sizing: border-box;
       }
 
       &::part(button) {
@@ -610,7 +609,7 @@ $nav-item--spacing-x: $spacing-06;
     &-mobile {
       width: 100%;
 
-      .navbar__profile-mobile__toggler {
+      &__toggler {
         display: flex;
         align-items: center;
         justify-content: space-between;
