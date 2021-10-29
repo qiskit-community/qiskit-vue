@@ -18,7 +18,7 @@
     "semantic-release": "semantic-release"
   },
   "engines": {
-    "node": "14.18.0"
+    "node": "16"
   },
   "files": [
     "dist/*",
