@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/qiskit-community/qiskit-vue/compare/v3.1.0...v3.2.0) (2021-10-29)
+
+
+### Features
+
+* update to Node v16 ([#36](https://github.com/qiskit-community/qiskit-vue/issues/36)) ([5646fe2](https://github.com/qiskit-community/qiskit-vue/commit/5646fe2807978f43ca236027951648c4b2091f5f))
+
 # [3.1.0](https://github.com/qiskit-community/qiskit-vue/compare/v3.0.0...v3.1.0) (2021-10-07)
 
 
