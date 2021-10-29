@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/qiskit-community/qiskit-vue/compare/v3.2.0...v3.3.0) (2021-10-29)
+
+
+### Features
+
+* **navbar:** add user profile cta ([#35](https://github.com/qiskit-community/qiskit-vue/issues/35)) ([65296e7](https://github.com/qiskit-community/qiskit-vue/commit/65296e75627b576d1ac089e692db8753e9c940a1))
+
 # [3.2.0](https://github.com/qiskit-community/qiskit-vue/compare/v3.1.0...v3.2.0) (2021-10-29)
 
 
