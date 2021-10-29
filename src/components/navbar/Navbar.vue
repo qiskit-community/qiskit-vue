@@ -31,6 +31,7 @@
             @bx-dropdown-beingselected.prevent="
               onDropdownBeingSelected(`dropdown-${label}`)
             "
+            @bx-dropdown-beingtoggled="onDropdownBeingToggled"
           >
             <QiskitBasicLink
               v-for="{ label: subItemLabel, url: subItemUrl } in subItems"
@@ -50,8 +51,53 @@
             </QiskitBasicLink>
           </bx-dropdown>
         </li>
+        <li class="navbar__nav-item">
+          <div
+            class="navbar__profile-dropdown"
+            :class="{
+              navbar__profile_expanded: showProfileMenu,
+            }"
+          >
+            <bx-btn
+              class="navbar__profile__toggler"
+              @click="toggleProfileMenu"
+              aria-controls="mobile-profile-menu"
+              :aria-expanded="showProfileMenu"
+            >
+              <QiskitIconUser class="navbar__profile__icon" />
+            </bx-btn>
+          </div>
+          <div
+            id="mobile-profile-menu"
+            class="navbar__profile-mobile"
+            :class="{
+              'navbar__profile-mobile_expanded': showProfileMenu,
+            }"
+          >
+            <bx-btn
+              class="navbar__profile-mobile__toggler"
+              kind="ghost"
+              @click="toggleProfileMenu"
+              tabindex="0"
+            >
+              <div class="navbar__profile-mobile__label">
+                <QiskitIconUser class="navbar__profile-mobile__user-icon" />
+                <span>Profile</span>
+              </div>
+              <QiskitIconChevronDown
+                class="navbar__profile-mobile__chevron-icon"
+              />
+            </bx-btn>
+            <QiskitBasicLink
+              v-if="showProfileMenu"
+              class="navbar__nav-link"
+              :url="'/'"
+            >
+              User Profile
+            </QiskitBasicLink>
+          </div>
+        </li>
       </ul>
-
       <footer class="navbar__footer">
         <div class="navbar__footer__social-links">
           <h4 class="navbar__footer__social-links__title">Stay Connected</h4>
@@ -79,11 +125,13 @@
 import { defineComponent } from "vue-demi";
 import { QiskitBasicLink } from "../basic-link";
 import {
+  QiskitIconChevronDown,
   QiskitIconClose,
   QiskitIconMedium,
   QiskitIconMenu,
   QiskitIconSlack,
   QiskitIconTwitter,
+  QiskitIconUser,
   QiskitIconYoutube,
 } from "../icons";
 import { QiskitLogo } from "../logo";
@@ -109,12 +157,14 @@ export default defineComponent({
   name: NAME_NAVBAR,
 
   components: {
+    QiskitIconChevronDown,
     QiskitBasicLink,
     QiskitIconClose,
     QiskitIconMedium,
     QiskitIconMenu,
     QiskitIconSlack,
     QiskitIconTwitter,
+    QiskitIconUser,
     QiskitIconYoutube,
     QiskitLogo,
     // TODO: Add Carbon's Dropdown component to the Navbar component #31
@@ -201,11 +251,17 @@ export default defineComponent({
         url: "https://medium.com/Qiskit",
       },
     ],
+
+    showProfileMenu: false,
   }),
 
   methods: {
     onDropdownBeingSelected(dropdownRef: string) {
       this.closeDropdown(dropdownRef);
+    },
+
+    onDropdownBeingToggled() {
+      this.showProfileMenu = false;
     },
 
     closeDropdown(dropdownRef: string) {
@@ -233,6 +289,10 @@ export default defineComponent({
         }
       }
     },
+
+    toggleProfileMenu() {
+      this.showProfileMenu = !this.showProfileMenu;
+    },
   },
 });
 </script>
@@ -255,6 +315,8 @@ body {
 @import "@carbon/type/scss/type";
 
 $nav-dropdown-item--background: $cool-gray-10;
+$nav-dropdown-item--width: 12rem;
+$nav-dropdown-item--box-shadow: rgb(0 0 0 / 20%) 0px 2px 6px;
 $nav-item--border: 1px solid $cool-gray-20;
 $nav-item--color: $cool-gray-80;
 $nav-item--height: 3.5rem;
@@ -304,7 +366,7 @@ $nav-item--spacing-x: $spacing-06;
         height: calc(100vh - #{$nav-item--height});
         margin-left: auto;
         margin-top: -1px;
-        width: 12rem;
+        width: $nav-dropdown-item--width;
         z-index: 1000;
       }
 
@@ -425,8 +487,6 @@ $nav-item--spacing-x: $spacing-06;
       }
 
       &::part(trigger-button) {
-        background-color: $nav-dropdown-item--background;
-
         @include carbon--breakpoint-down("lg") {
           border-bottom: $nav-item--border;
           margin-bottom: -1px;
@@ -449,6 +509,7 @@ $nav-item--spacing-x: $spacing-06;
   &__nav-item {
     display: flex;
     margin: 0;
+    position: relative;
 
     @include carbon--breakpoint-down("lg") {
       border-bottom: $nav-item--border;
@@ -465,7 +526,7 @@ $nav-item--spacing-x: $spacing-06;
     text-decoration: none;
 
     @include carbon--breakpoint-down("lg") {
-      width: 100%;
+      max-width: 100%;
     }
 
     &:hover {
@@ -484,7 +545,6 @@ $nav-item--spacing-x: $spacing-06;
     height: $nav-item--height;
     padding: 0 $spacing-03;
     text-decoration: none;
-    width: 100%;
 
     &:last-child {
       @include carbon--breakpoint-up("lg") {
@@ -515,6 +575,134 @@ $nav-item--spacing-x: $spacing-06;
     &__icon {
       fill: $nav-item--color;
       height: 1.25rem;
+    }
+  }
+
+  &__profile {
+    &__icon {
+      height: 2rem;
+      border: 2px solid $white-0;
+      border-radius: 50%;
+      fill: $white-0;
+      box-sizing: border-box;
+    }
+    &__toggler {
+      @include carbon--breakpoint-down("lg") {
+        display: none;
+      }
+
+      &::part(button) {
+        background-color: $carbon--purple-70;
+        transition: background-color 70ms cubic-bezier(0, 0, 0.38, 0.9) 0s;
+        padding-right: 15px;
+
+        &:focus {
+          border-color: $carbon--purple-70;
+          box-shadow: initial;
+        }
+
+        &:hover {
+          background-color: $carbon--purple-80;
+        }
+      }
+    }
+    &-mobile {
+      width: 100%;
+
+      &__toggler {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        max-width: none;
+
+        &:focus {
+          outline: 2px solid $blue-60;
+          outline-offset: -2px;
+        }
+
+        &::part(button) {
+          color: $nav-item--color;
+          height: $nav-item--height;
+          border-color: transparent;
+          box-shadow: initial;
+          padding: 0 1.25rem 0 $spacing-06;
+
+          &:hover {
+            background-color: $white-0;
+          }
+        }
+
+        @include carbon--breakpoint-up("lg") {
+          display: none;
+        }
+      }
+
+      &_expanded {
+        @include carbon--breakpoint-up("lg") {
+          position: absolute;
+          top: $nav-item--height;
+          right: 0;
+          width: $nav-dropdown-item--width;
+        }
+
+        .navbar__profile-mobile__toggler {
+          &::part(button) {
+            &:active,
+            &:focus {
+              border-color: transparent;
+              box-shadow: initial;
+              outline: 2px solid $blue-60;
+              outline-offset: -2px;
+            }
+          }
+        }
+
+        .navbar__profile-mobile__user-icon {
+          fill: $carbon--purple-70;
+          border-color: $carbon--purple-70;
+        }
+
+        .navbar__profile-mobile__label {
+          color: $carbon--purple-70;
+        }
+
+        .navbar__profile-mobile__chevron-icon {
+          transform: rotate(-180deg);
+        }
+
+        .navbar__nav-link {
+          background-color: $cool-gray-10;
+          border: none;
+          border-top: $nav-item--border;
+
+          @include carbon--breakpoint-up("lg") {
+            box-shadow: $nav-dropdown-item--box-shadow;
+          }
+
+          &:hover {
+            background-color: $cool-gray-20;
+          }
+        }
+      }
+
+      &__label {
+        @include carbon--type-style("body-long-02");
+        display: flex;
+        align-items: center;
+      }
+
+      &__user-icon {
+        height: 1rem;
+        border: 1px solid $nav-item--color;
+        padding: 1px;
+        border-radius: 50%;
+        margin-right: $spacing-03;
+      }
+
+      &__chevron-icon {
+        height: 1rem;
+      }
     }
   }
 }

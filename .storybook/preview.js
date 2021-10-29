@@ -1,3 +1,4 @@
+import "carbon-web-components/es/components/button";
 import "carbon-web-components/es/components/dropdown";
 import "../dist/styles/index.css"
 
