@@ -28,11 +28,8 @@
     "@carbon/colors": "^10.27.0",
     "@carbon/layout": "^10.26.0",
     "@carbon/type": "^10.30.0",
-    "carbon-components": "^10.42.0",
-    "carbon-web-components": "^1.16.2",
+    "carbon-web-components": "^1.19.0",
     "core-js": "^3.6.5",
-    "lit-element": "^2.5.1",
-    "lit-html": "^1.4.1",
     "vue-demi": "latest"
   },
   "devDependencies": {
