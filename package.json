@@ -1,6 +1,6 @@
 {
   "name": "@qiskit-community/qiskit-vue",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "main": "./src/index.ts",
   "repository": {
     "type": "git",

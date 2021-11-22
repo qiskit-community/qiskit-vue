@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/qiskit-community/qiskit-vue/compare/v3.3.0...v3.4.0) (2021-11-22)
+
+
+### Features
+
+* publish Carbon dependencies updates ([6e2bf0b](https://github.com/qiskit-community/qiskit-vue/commit/6e2bf0bc1c61275589586773e2066c4c6c68dc2c))
+
 # [3.3.0](https://github.com/qiskit-community/qiskit-vue/compare/v3.2.0...v3.3.0) (2021-10-29)
 
 
